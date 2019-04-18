@@ -10,6 +10,7 @@ public class Produto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int id;
 
     private String nome;
@@ -83,4 +84,32 @@ public class Produto implements Serializable {
     public void setDtCadastro(LocalDate dtCadastro) {
         this.dtCadastro = dtCadastro;
     }
+
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", nullable = false)
+    private Categoria categoria;
 }
+
+
+//Mudar para @ManyToMany
+
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column
+//    private int id;
+//
+//    @NotEmpty
+//    @Column
+//    @Size (max = 25)
+//    private String name;
+//
+//    @Column
+//    @Size (max = 255)
+//    private String description;
+//
+//
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "category_id", nullable = false)
+//    private Category category;
