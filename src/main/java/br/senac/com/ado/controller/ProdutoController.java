@@ -1,6 +1,7 @@
 package br.senac.com.ado.controller;
 
 import br.senac.com.ado.model.Produto;
+import br.senac.com.ado.repository.CategoriaRepository;
 import br.senac.com.ado.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,9 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     @GetMapping
     public ModelAndView listagem(){
@@ -75,8 +79,11 @@ public class ProdutoController {
         prod.setPrecoVenda(p.getPrecoVenda());
         prod.setQuantidade(p.getQuantidade());
 
+
         produtoRepository.save(prod);
 
         return mv;
     }
+
+
 }

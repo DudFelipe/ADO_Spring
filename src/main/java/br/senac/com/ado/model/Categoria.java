@@ -6,18 +6,17 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Categoria {
 
-    @Entity
-    @Table(name = "CATEGORIA")
-    public class Category {
+@Entity
+@Table(name = "CATEGORIA")
+public class Categoria {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Column
         private int id;
 
-        @NotEmpty
+
         @Column
         @Size(max = 25)
         private String name;
@@ -38,9 +37,7 @@ public class Categoria {
             this.name = name;
         }
 
-        //Here mappedBy indicates that the owner is in the other side
-        @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoria", cascade = CascadeType.ALL)
-        private Set<Produto> products = new HashSet<Produto>();
-
-    }
+        @OneToMany(cascade=CascadeType.ALL, mappedBy="categoria")
+        private Set<Categoria> categoria;
 }
+

@@ -86,8 +86,9 @@ public class Produto implements Serializable {
     }
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id", nullable = false)
+
+    @ManyToOne
+    @JoinColumn(name = "IDCAT")
     private Categoria categoria;
 }
 
