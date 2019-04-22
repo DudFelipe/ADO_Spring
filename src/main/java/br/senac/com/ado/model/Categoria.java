@@ -1,10 +1,7 @@
 package br.senac.com.ado.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
+
 
 
 @Entity
@@ -13,13 +10,13 @@ public class Categoria {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column
+        @Column(name = "IDCAT")
         private int id;
 
-
-        @Column
-        @Size(max = 25)
+        @Column(name = "NOME")
         private String name;
+
+
 
         public int getId() {
             return id;
@@ -37,7 +34,5 @@ public class Categoria {
             this.name = name;
         }
 
-        @OneToMany(cascade=CascadeType.ALL, mappedBy="categoria")
-        private Set<Categoria> categoria;
 }
 
