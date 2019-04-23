@@ -3,6 +3,7 @@ package br.senac.com.ado.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "PRODUTO")
@@ -10,6 +11,7 @@ public class Produto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int id;
 
     private String nome;
@@ -19,6 +21,23 @@ public class Produto implements Serializable {
     private int quantidade;
     private int disponivel;
     private LocalDate dtCadastro;
+
+    @ManyToMany
+    @JoinTable(
+            name = "produto_categoria",
+            joinColumns = @JoinColumn(name = "id_produto"),
+            inverseJoinColumns = @JoinColumn(name = "id_categoria")
+    )
+
+    private Set<Categoria> categoria;
+
+    public Set<Categoria> getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Set<Categoria> categoria) {
+        this.categoria = categoria;
+    }
 
     public int getId() {
         return id;
@@ -83,4 +102,10 @@ public class Produto implements Serializable {
     public void setDtCadastro(LocalDate dtCadastro) {
         this.dtCadastro = dtCadastro;
     }
+
+
+
+
 }
+
+
