@@ -56,10 +56,10 @@
 <!--                <td th:text="${categoria.id}"></td>-->
 <!--                <td th:text="${categoria.name}"></td>-->
 <!--            </tr>-->
-
+            <div>
                 <label class="col-sm-2 col-form-label" >Categorias</label>
                 <span class="col-sm-1" th:each="categoria : ${categoriasNome}">
-                    <input class="form-check-input" type="checkbox" th:name="${categoria.name}" th:id="${categoria.id}" th:value="${categoria.id}">
+                    <input class="form-check-input" type="checkbox"  th:field="*{categoria}" th:name="${categoria.name}" th:id="${categoria.id}" th:value="${categoria.id}">
                     <label class="form-check-label" th:for="${categoria.name}">Cat <span th:text="${categoria.id}"></span></label>
                 </span>
 
