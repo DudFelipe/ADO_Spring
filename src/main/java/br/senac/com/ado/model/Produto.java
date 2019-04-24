@@ -22,12 +22,13 @@ public class Produto implements Serializable {
     private int disponivel;
     private LocalDate dtCadastro;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "produto_categoria",
             joinColumns = @JoinColumn(name = "id_produto"),
             inverseJoinColumns = @JoinColumn(name = "id_categoria")
     )
+
 
     private Set<Categoria> categoria;
 

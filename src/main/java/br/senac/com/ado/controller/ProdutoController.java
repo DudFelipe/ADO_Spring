@@ -70,9 +70,11 @@ public class ProdutoController {
     public ModelAndView alterar(@PathVariable int id){
         ModelAndView mv = new ModelAndView("Tela2A");
 
+        List<Categoria> categorias = categoriaRepository.findAll();
         Produto p = produtoRepository.getOne(id);
 
         mv.addObject("produto", p);
+        mv.addObject("categoriasNome", categorias);
 
         return mv;
     }
@@ -80,8 +82,6 @@ public class ProdutoController {
     @PostMapping("/alterar/{id}")
     public ModelAndView alterar(@PathVariable int id, Produto p){
         ModelAndView mv = new ModelAndView("redirect:/produto");
-
-        List<Categoria> categorias = categoriaRepository.findAll();
 
         Produto prod = produtoRepository.getOne(id);
 
@@ -93,8 +93,6 @@ public class ProdutoController {
         prod.setPrecoVenda(p.getPrecoVenda());
         prod.setQuantidade(p.getQuantidade());
         prod.setCategoria((p.getCategoria()));
-
-        mv.addObject("categoriasNome", categorias);
 
         produtoRepository.save(prod);
 
