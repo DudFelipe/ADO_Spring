@@ -10,7 +10,7 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(name = "IDCAT")
+    @Column(name = "IDCAT")
     private int id;
 
     @Column(name = "nome")
