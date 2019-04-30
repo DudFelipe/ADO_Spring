@@ -20,6 +20,8 @@ public class Produto implements Serializable {
     private double precoVenda;
     private int quantidade;
     private int disponivel;
+
+    @Column(name = "DT_CADASTRO")
     private LocalDate dtCadastro;
 
     @ManyToMany(fetch = FetchType.LAZY)

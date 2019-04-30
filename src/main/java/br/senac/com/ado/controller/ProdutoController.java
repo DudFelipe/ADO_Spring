@@ -63,6 +63,8 @@ public class ProdutoController {
 
         mv.addObject("produtos", produtos);
 
+        mv.addObject("insert", true);
+
         return mv;
     }
 
@@ -97,6 +99,20 @@ public class ProdutoController {
         produtoRepository.save(prod);
 
         return mv;
+    }
+
+    @GetMapping("/excluir/{id}")
+    public ModelAndView excluir(@PathVariable int id){
+
+        ModelAndView mv = new ModelAndView("redirect:/produto");
+
+        Produto p = produtoRepository.getOne(id);
+        produtoRepository.delete(p);
+
+        mv.addObject("sucesso", true);
+
+        return mv;
+
     }
 
 
