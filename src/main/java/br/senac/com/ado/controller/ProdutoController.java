@@ -63,6 +63,8 @@ public class ProdutoController {
 
         mv.addObject("produtos", produtos);
 
+        mv.addObject("insert", true);
+
         return mv;
     }
 

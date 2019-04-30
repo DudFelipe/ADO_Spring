@@ -12,8 +12,12 @@
     <div class="container">
         <h1 style="text-align: center">Gerenciamento de Produtos</h1>
 
-        <div class="alert alert-primary" th:if="${#httpServletRequest.getParameter('sucesso') == 'true'}">
-            This is a primary alert with . Give it a click if you like.
+        <div class="alert alert-success" th:if="${#httpServletRequest.getParameter('sucesso') == 'true'}">
+            Produto Excluido com sucesso
+        </div>
+
+        <div class="alert alert-success" th:if="${#httpServletRequest.getParameter('insert') == 'true'}">
+            Produto Inserido com sucesso
         </div>
 
         <table class="table">
@@ -55,7 +59,7 @@
                     </div>
                     <div class="modal-footer">
                       <a href="/produto"><button id="sim" class="btn btn-success" >Sim</button></a>
-                        <button class="btn btn-secondary" data-dismiss="modal">Não</button>
+                      <button id="naoexcluir" class="btn btn-secondary" data-dismiss="modal">Não</button>
                     </div>
                 </div>
             </div>
@@ -76,6 +80,7 @@
           $('#sim').closest('a').attr('href', $(this).attr('href'));
 
         });
+
 
 
     </script>

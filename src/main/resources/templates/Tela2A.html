@@ -6,78 +6,91 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-        <form method="POST" th:object="${produto}">
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="nome">Nome</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nome" name="nome" th:field="*{nome}">
-                </div>
+<div class="container">
+    <form method="POST" th:object="${produto}">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="nome">Nome</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nome" name="nome" th:field="*{nome}">
             </div>
+        </div>
 
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="descricao">Descrição</label>
-                <div class="col-sm-10">
-                    <textarea class="form-control" id="descricao" name="descricao" th:field="*{descricao}"></textarea>
-                </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="descricao">Descrição</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="descricao" name="descricao" th:field="*{descricao}"></textarea>
             </div>
+        </div>
 
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="precoCompra">Preço Compra</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="precoCompra" name="precoCompra" th:field="*{precoCompra}">
-                </div>
-                <label class="col-sm-2 col-form-label" for="precoVenda">Preço Venda</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="precoVenda" name="precoVenda" th:field="*{precoVenda}">
-                </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="precoCompra">Preço Compra</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="precoCompra" name="precoCompra" th:field="*{precoCompra}">
             </div>
-
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="quantidade">Quantidade</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="quantidade" name="quantidade" th:field="*{quantidade}">
-                </div>
+            <label class="col-sm-2 col-form-label" for="precoVenda">Preço Venda</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="precoVenda" name="precoVenda" th:field="*{precoVenda}">
             </div>
+        </div>
 
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" >Status</label>
-                <div class="col-sm-2">
-                    <input class="form-check-input" type="radio" name="status" id="valido" value="1" th:field="*{disponivel}">
-                    <label class="form-check-label" for="valido">Disponível</label>
-                </div>
-                <div class="col-sm-2">
-                    <input class="form-check-input" type="radio" name="status" id="invalido" value="0" th:field="*{disponivel}">
-                    <label class="form-check-label" for="invalido">Indisponível</label>
-                </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="quantidade">Quantidade</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="quantidade" name="quantidade" th:field="*{quantidade}">
             </div>
+        </div>
 
-<!--            <tr th:each="categoria : ${categoriasNome}">-->
-<!--                <td th:text="${categoria.id}"></td>-->
-<!--                <td th:text="${categoria.name}"></td>-->
-<!--            </tr>-->
-            <div>
-                <label class="col-sm-2 col-form-label" >Categorias</label>
-                <span class="col-sm-1" th:each="categoria : ${categoriasNome}">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" >Status</label>
+            <div class="col-sm-2">
+                <input class="form-check-input" type="radio" name="status" id="valido" value="1" th:field="*{disponivel}">
+                <label class="form-check-label" for="valido">Disponível</label>
+            </div>
+            <div class="col-sm-2">
+                <input class="form-check-input" type="radio" name="status" id="invalido" value="0" th:field="*{disponivel}">
+                <label class="form-check-label" for="invalido">Indisponível</label>
+            </div>
+        </div>
+
+        <div>
+            <label class="col-sm-2 col-form-label" >Categorias</label>
+            <span class="col-sm-1" th:each="categoria : ${categoriasNome}">
                     <input class="form-check-input" type="checkbox"  th:field="*{categoria}" th:name="${categoria.name}" th:id="${categoria.id}" th:value="${categoria.id}">
                     <label class="form-check-label" th:for="${categoria.name}">Cat <span th:text="${categoria.id}"></span></label>
                 </span>
 
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-success col-sm-12">Salvar</button>
             </div>
-
-            <div class="form-group row">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-3">
-                    <button type="submit" class="btn btn-success col-sm-12">Salvar</button>
-                </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-warning col-sm-12" th:href="@{/produto}">Cancelar</button>
-                </div>
-                <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <a class="btn btn-warning col-sm-12" th:href="@{/produto}">Cancelar</a>
             </div>
+            <div class="col-sm-3"></div>
+        </div>
 
-        </form>
+    </form>
 
-    </div>
+    <script>
+
+        $( ".excluiProduto" ).click(function(e) {
+            e.preventDefault();
+            var nomeProduto = $(this).attr("nomeProduto");
+            var idProduto = $(this).attr("idProduto");
+            $("#exampleModal").modal('show');
+            $("#nomeProdutoModal").text(nomeProduto);
+
+            $('#sim').closest('a').attr('href', $(this).attr('href'));
+
+        });
+
+
+
+    </script>
+
+</div>
 </body>
 </html>
